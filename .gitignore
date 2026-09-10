@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Todo CLI (Python) — runtime user data and Python build cruft.
+# todos.json is runtime/user data written by the CLI, never committed.
+todos.json
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+# Coverage report-only tooling output.
+.coverage
+.coverage.*
+htmlcov/
+# Python virtual environments.
+.venv/
+venv/

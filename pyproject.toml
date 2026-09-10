@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "todo-cli"
+version = "0.1.0"
+description = "A small, local, single-user personal todo list CLI."
+readme = "README.md"
+requires-python = ">=3.11"
+# Core logic uses the Python standard library only. There are intentionally
+# NO runtime dependencies.
+dependencies = []
+
+[project.optional-dependencies]
+# Dev/CI-time only. None of these are runtime dependencies. Versions are pinned
+# for a reproducible dev/CI environment.
+dev = [
+    "black==24.8.0",
+    "ruff==0.6.9",
+    "coverage==7.6.1",
+]
+
+[project.scripts]
+todo = "cli:main"
+
+[tool.setuptools]
+py-modules = ["todo", "cli"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# PEP 8 (E/W), pyflakes (F), naming/snake_case (N), and the flake8-bandit
+# security rule set (S) so lightweight SAST comes free with the linter.
+select = ["E", "W", "F", "N", "S"]
+
+[tool.ruff.lint.per-file-ignores]
+# Test code legitimately uses assert statements (S101).
+"test_todo.py" = ["S101"]
+
+[tool.coverage.run]
+# Report-only coverage over the two application modules; does not gate.
+source = ["todo", "cli"]
